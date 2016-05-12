@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :responses
   has_many :votes
 
+  validates :username, :email, :password, presence: true
+
   include BCrypt
 
   def self.authenticate(email, password)
