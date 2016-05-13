@@ -1,25 +1,30 @@
 
 <h3><%= @question.title %></h3>
-<div>
+<div id="question-show-page">
 <div class="up-down-buttons">
 <form method="post" action='/questions/<%= @question.id %>/vote' class="inline">
   <button id="upvote-button" type="submit" name="submit_upvote" value="submit_up_value" class="glyphicon glyphicon-arrow-up" aria-hidden="true"><%= @question.up_vote_sum %></button>
 
   <button id="downvote-button" type="submit" name="submit_downvote" value="submit_down_value" class="glyphicon glyphicon-arrow-down" aria-hidden="true"><%= @question.down_vote_sum %></button>
 </form>
-
 </div>
-<h5><%= @question.text %></h5>
+<h5>Description: <br><%= @question.text %></h5>
 <% @question.responses.each do |response| %>
-  <p><%= response %></p>
+  <p><%= response.text %></p>
 <% end %>
-</div>
 
-<div>
+
+<button id="answer-form-show"  type="button" class"btn btn-warning" method="get" action='/questions/<%=@question.id%>/answers/new'>Answer</button>
+<br>
+<br>
+
+<div id="answers-list">
+Answers:
 <% @answers.each do |answer|  %>
-  <h5><%= answer %></h5><br
+  <h5><br><%= answer.text %></h5>
   <% answer.responses.each do |response| %>
-    <p><%= response %></p>
+    <p><%= response.text %></p>
   <% end %>
 <% end %>
+</div>
 </div>

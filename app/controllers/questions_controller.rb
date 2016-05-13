@@ -16,6 +16,15 @@ post '/questions' do
   end
 end
 
+post '/questions/:question_id/answers' do
+  @answer = Answer.create(params[:answer])
+  @question = Question.find(params[:question_id])
+  @question.answers << @answer
+  if request.xhr?
+    erb :'answers/_new', layout: false
+  end
+end
+
 get '/questions/:id' do
 	@question = Question.find_by(id: params[:id])
   @answers = @question.answers
@@ -39,6 +48,9 @@ end
 
 #ANSWER A QUESTION ROUTES
 get '/questions/:id/answers/new' do
+
+  @question = Question.find(params[:id])
+  erb :'answers/new', layout: false
 
 end
 
