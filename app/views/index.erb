@@ -1,11 +1,12 @@
 <div align="center">
   <h1>Stack Overfloweth</h1>
-
-<div id="questions-list">
-  <% @questions.each do |question| %>
-      <h3><a href="questions/<%= question.id%>"><%=question.title%></a></h3>
-  <% end %>
+  <br><br>
 </div>
 
-
+<div class="container">
+  <div id="questions-list" align="left">
+    <% @questions.each do |question| %>
+        <h3><a href="questions/<%= question.id%>"><%=question.title%></a></h3>
+    <% end %>
+  </div>
 </div>
