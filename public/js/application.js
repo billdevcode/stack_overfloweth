@@ -30,6 +30,7 @@ $(document).ready(function() {
     })
   })
 
+
   $("#answer-form-show").on('click', function(event){
     event.preventDefault();
     var url = $(this).attr("action");
@@ -56,5 +57,20 @@ $(document).ready(function() {
   })
   });
 
+
+
+  $("#downvote-button").on('click', function(event){
+    event.preventDefault();
+    console.log(this)
+    var url = $(this).parent().attr('action');
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: "data=downvote"
+    }).done(function(result){
+      console.log(result);
+      $("#downvote-button").html(result);
+    })
+  })
 
 });

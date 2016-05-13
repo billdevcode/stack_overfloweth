@@ -48,8 +48,10 @@ end
 
 #ANSWER A QUESTION ROUTES
 get '/questions/:id/answers/new' do
+
   @question = Question.find(params[:id])
   erb :'answers/new', layout: false
+
 end
 
 post '/questions/:id/answers' do
@@ -64,6 +66,7 @@ end
 
 #RESPOND TO A QUESTION'S ANSWER ROUTES
 get '/questions/:question_id/answers/:id/responses/new' do
+
 end
 
 post '/questions/:question_id/answers/:id/responses' do
@@ -77,9 +80,8 @@ post '/questions/:question_id/answers/:id/responses' do
 end
 
 post '/questions/:id/vote' do
-  p params
   @question = Question.find_by(id: params[:id])
-  @vote = Vote.new
+  @vote = Vote.create(user_id: @question.user_id, votable_id: @question.id, votable_type: "Question")
   if request.xhr?
     if params[:data] == "upvote"
       @vote.up_vote = 1
@@ -91,6 +93,6 @@ post '/questions/:id/vote' do
       return @question.down_vote_sum.to_s
     end
   else
-    # redirect "/questions/#{params[:id]}/vote"
+    redirect "/questions/#{params[:id]}/vote"
   end
 end

@@ -18,3 +18,11 @@ end
   user = User.all.sample
   user.answers << Answer.create!(text: Faker::Hipster.paragraph, question_id: rand(1..40))
 end
+
+50.times do
+  Vote.create(user_id: rand(1..40), up_vote: 1, down_vote: 0, votable_id: rand(1..40), votable_type: "Question")
+end
+
+50.times do
+  Vote.create(user_id: rand(1..40), up_vote: 1, down_vote: 0, votable_id: rand(1..40), votable_type: "Answer")
+end

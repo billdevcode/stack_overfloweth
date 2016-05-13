@@ -8,10 +8,22 @@ class Question < ActiveRecord::Base
 	validates :title, :text, presence: true
 
 	def up_vote_sum
-		votes.sum(:up_vote)
+		sum = 0
+		self.votes.each do |vote|
+			if vote.up_vote == 1
+				sum += 1
+			end
+		end
+		return sum
 	end
 
 	def down_vote_sum
-		votes.sum(:down_vote)
+		sum = 0
+		self.votes.each do |vote|
+			if vote.down_vote == 1
+				sum += 1
+			end
+		end
+		return sum
 	end
 end
