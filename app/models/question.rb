@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
 	validates :title, :text, presence: true
 
 	def up_vote_sum
-		votes.sum(:up_vote)
+		votes.sum("1 + :up_vote")
 	end
 
 	def down_vote_sum
