@@ -1,4 +1,4 @@
-<form action="/questions/<%= @question.question_id %>/answer" method="post">
+<form id="answer-form" action="/questions/<%= @question.id %>/answers" method="post">
   <fieldset>
     <legend>Your answer here</legend>
     Content: <textarea class="form-control" name="answer[text]" placeholder="Your Answer Here"></textarea><br>
