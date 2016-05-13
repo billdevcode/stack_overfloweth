@@ -29,4 +29,32 @@ $(document).ready(function() {
       $("#upvote-button").html(result);
     })
   })
+
+  $("#answer-form-show").on('click', function(event){
+    event.preventDefault();
+    var url = $(this).attr("action");
+    $.ajax({
+      method: "get",
+      url: url,
+    }).done(function(response){
+      $("#answers-list").prepend(response);
+    })
+  })
+
+   $("#question-show-page").on("submit", "#answer-form", function(ev){
+    ev.preventDefault();
+    var data = $("#answer-form").serialize();
+    var url = $("#answer-form").attr("action");
+    $.ajax({
+      url: url,
+      method: 'post',
+      data: data
+    }).done(function(answer) {
+      $("#answers-list").append(answer);
+      $("#answer-form").remove();
+
+  })
+  });
+
+
 });
