@@ -26,13 +26,14 @@
 <body>
   <nav class="navbar navbar-light bg-faded">
   <div class="container" id="question-container">
+    <br>
     <%= erb :"questions/_ask_question" %>
-    <div class="navbar-header">
+    <!-- <div class="navbar-header">
       <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Index </a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href= "#"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Search </a></li>
-    </ul>
+    </ul> -->
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li><a href="#" aria-hidden="true"></span> Profile </a></li>
