@@ -1,10 +1,20 @@
 $(document).ready(function() {
-  $("#question-form").submit(function(event){
-    event.preventDefault()
-    var title = $(":input")[2]["value"]
-    var body = $(":input")[3]["value"]
-    console.log(title)
-    console.log(body)
-    // $.post() to whatever controller will handle this
+
+  $("#question-container").on("submit", "#question-form", function(ev){
+    ev.preventDefault();
+    var data = $(this).serialize();
+    $.ajax({
+      url: '/questions',
+      method: 'post',
+      data: data
+    }).done(function(question) {
+      $("#myModalNorm").modal("hide");
+      $("#question-form")[0].reset();
+      $("#questions-list").prepend(question)
+  })
+
   });
+
+
+
 });

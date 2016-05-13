@@ -1,11 +1,9 @@
 <div align="center">
   <h1>Stack Overfloweth</h1>
 
-<div>
+<div id="questions-list">
   <% @questions.each do |question| %>
-    <div>
-      <h3><%=question.title%><a href="#"><%= question.id%></a></h3>
-    </div>
+      <h3><a href="questions/<%= question.id%>"><%=question.title%></a></h3>
   <% end %>
 </div>
 

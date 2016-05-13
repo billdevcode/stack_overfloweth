@@ -3,14 +3,14 @@ before do
 end
 
 get '/' do
-  @questions = []
+  @questions = Question.all.reverse
   erb :index
 end
 
-post '/questions' do
-  p params
-  redirect '/'
-end
+# post '/questions' do
+#   p params
+#   redirect '/'
+# end
 
 
 post '/login' do
