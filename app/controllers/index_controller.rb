@@ -3,28 +3,29 @@ before do
 end
 
 get '/' do
-  @questions = Question.all
+
+  @questions = Question.all.reverse
   erb :index
 end
 
-post '/questions' do
-  p params
-  redirect '/'
-end
+# post '/questions' do
+#   p params
+#   redirect '/'
+# end
 
 
 post '/login' do
-  @user = User.authenticate(params[:email], params[:password])
+  @user = User.authenticate(params["user"])
   if @user
     login(@user)
     redirect '/'
   else
-    redirect '/login'
+    redirect '/'
   end
 end
 
-post '/signup' do
-  @user = User.new(params[:user])
+post '/users' do
+  @user = User.new(params['user'])
   if @user.save
     login(@user)
     redirect '/'

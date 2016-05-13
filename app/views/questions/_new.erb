@@ -1,9 +1,1 @@
-<form action="/questions" method="post">
-  <fieldset>
-    <legend>Your question here</legend>
-    Title: <input type="text" class="form-control" name="question[title]" placeholder="Your title here"><br>
-    Content: <textarea class="form-control" name="question[text]" placeholder="Your question here"></textarea><br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
-</form>
-
+<h3><a href="questions/<%= @question.id%>"><%=@question.title%></a></h3>
