@@ -2,28 +2,32 @@ before do
   @user = true if session[:user_id]
 end
 
+get '/' do
+  erb :layout
+end
+
 
 post '/login' do
-  user = User.find_by(email: params[:email])
-  if user.authenticate(params[:password])
-    session[:user_id] = user.id
+  @user = User.authenticate(params[:email], params[:password])
+  if @user
+    login(@user)
     redirect '/'
   else
-    erb :login
+    redirect '/login'
   end
 end
 
-post '/new' do
-  user = User.new(params[:user])
-  if user.save
-    session[:user_id] = user.id
+post '/signup' do
+  @user = User.new(params[:user])
+  if @user.save
+    login(@user)
     redirect '/'
   else
-    redirect '/new'
+    redirect '/signup'
   end
 end
 
 get '/logout' do
-  session[:user_id] = nil
+  logout!
   redirect '/'
 end
