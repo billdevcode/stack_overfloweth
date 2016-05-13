@@ -8,9 +8,12 @@ get '/questions/new' do
 end
 
 post '/questions' do
-	#IF WE CREATE A HASH WE DONT HAVE TO PUT INDIVIDUAL PARAMS
 	@question = Question.create(params[:questions])
-  redirect '/questions'
+  if request.xhr?
+    erb :'questions/_new', layout: false
+  else
+    redirect '/'
+  end
 end
 
 get '/questions/:id' do
