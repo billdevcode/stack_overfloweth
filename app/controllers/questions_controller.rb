@@ -39,6 +39,7 @@ end
 
 #ANSWER A QUESTION ROUTES
 get '/questions/:id/answers/new' do
+
 end
 
 post '/questions/:id/answers' do
@@ -53,6 +54,7 @@ end
 
 #RESPOND TO A QUESTION'S ANSWER ROUTES
 get '/questions/:question_id/answers/:id/responses/new' do
+
 end
 
 post '/questions/:question_id/answers/:id/responses' do
@@ -68,11 +70,13 @@ end
 post '/questions/:id/vote' do
   p params
   @question = Question.find_by(id: params[:id])
-  @vote = Vote.new
+  @vote = Vote.create(user_id: @question.user_id, votable_id: @question.id)
   if request.xhr?
     if params[:data] == "upvote"
       @vote.up_vote = 1
       @vote.save
+      p "=======" * 50
+      p @question.up_vote_sum
       return @question.up_vote_sum.to_s
     elsif params[:data] == "downvote"
       @vote.down_vote = 1
