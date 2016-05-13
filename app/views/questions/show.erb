@@ -1,8 +1,17 @@
 
 <h3><%= @question.title %></h3>
-<p><%= @question.text %></p>
+<div>
+<h5><%= @question.text %></h5>
+<% @question.responses.each do |response| %>
+  <p><%= response %></p>
+<% end %>
+</div>
 
+<div>
 <% @answers.each do |answer|  %>
-  <p><%= answer %></p><br>
+  <h5><%= answer %></h5>
+  <% answer.responses.each do |response| %>
+    <p><%= response %></p>
   <% end %>
-
+<% end %>
+</div>

@@ -1,10 +1,9 @@
-<form action="/users/<%= params[:user_id] %>/questions" method="post">
+<form action="/questions" method="post">
   <fieldset>
     <legend>Your question here</legend>
-    Content: <textarea class="form-control" name="question[body]" placeholder="140 characters or fewer"></textarea><br>
+    Title: <input type="text" class="form-control" name="question[title]" placeholder="Your title here"><br>
+    Content: <textarea class="form-control" name="question[text]" placeholder="Your question here"></textarea><br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
 </form>
 
-
-# for partial use.
