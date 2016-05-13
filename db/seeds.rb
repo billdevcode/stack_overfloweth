@@ -16,5 +16,5 @@ end
 #Create answers
 40.times do
   user = User.all.sample
-  user.answers << Answer.create!(text: Faker::Hipster.paragraph)
+  user.answers << Answer.create!(text: Faker::Hipster.paragraph, question_id: rand(1..40))
 end

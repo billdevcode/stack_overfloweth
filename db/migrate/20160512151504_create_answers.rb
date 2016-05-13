@@ -5,6 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
         t.text :text
         t.belongs_to :question
 
+
   	  	t.timestamps null: false
   	end
   end
