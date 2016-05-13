@@ -1,6 +1,10 @@
 
 <h3><%= @question.title %></h3>
 <div>
+<div class="up-down-buttons">
+<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+</div>
 <h5><%= @question.text %></h5>
 <% @question.responses.each do |response| %>
   <p><%= response %></p>
