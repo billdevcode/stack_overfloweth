@@ -9,19 +9,21 @@ class Question < ActiveRecord::Base
 
 	def up_vote_sum
 		sum = 0
-		p "***" * 50
-		p self.votes
 		self.votes.each do |vote|
 			if vote.up_vote == 1
 				sum += 1
 			end
 		end
 		return sum
-		# self.votes.sum(:up_vote)
-		# p self.votes
 	end
 
 	def down_vote_sum
-		self.votes.sum(:down_vote)
+		sum = 0
+		self.votes.each do |vote|
+			if vote.down_vote == 1
+				sum += 1
+			end
+		end
+		return sum
 	end
 end

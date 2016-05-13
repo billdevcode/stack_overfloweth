@@ -68,15 +68,12 @@ post '/questions/:question_id/answers/:id/responses' do
 end
 
 post '/questions/:id/vote' do
-  p params
   @question = Question.find_by(id: params[:id])
-  @vote = Vote.create(user_id: @question.user_id, votable_id: @question.id)
+  @vote = Vote.create(user_id: @question.user_id, votable_id: @question.id, votable_type: "Question")
   if request.xhr?
     if params[:data] == "upvote"
       @vote.up_vote = 1
       @vote.save
-      p "=======" * 50
-      p @question.up_vote_sum
       return @question.up_vote_sum.to_s
     elsif params[:data] == "downvote"
       @vote.down_vote = 1
@@ -84,6 +81,6 @@ post '/questions/:id/vote' do
       return @question.down_vote_sum.to_s
     end
   else
-    # redirect "/questions/#{params[:id]}/vote"
+    redirect "/questions/#{params[:id]}/vote"
   end
 end
