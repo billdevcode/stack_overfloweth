@@ -2,6 +2,10 @@ before do
   @user = true if session[:user_id]
 end
 
+get '/' do
+  erb :layout
+end
+
 
 post '/login' do
   @user = User.authenticate(params[:email], params[:password])
