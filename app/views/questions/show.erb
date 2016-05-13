@@ -2,8 +2,12 @@
 <h3><%= @question.title %></h3>
 <div>
 <div class="up-down-buttons">
-<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+<form method="post" action='/questions/<%= @question.id %>/vote' class="inline">
+  <button id="upvote-button" type="submit" name="submit_upvote" value="submit_up_value" class="glyphicon glyphicon-arrow-up" aria-hidden="true"><%= @question.up_vote_sum %></button>
+
+  <button id="downvote-button" type="submit" name="submit_downvote" value="submit_down_value" class="glyphicon glyphicon-arrow-down" aria-hidden="true"><%= @question.down_vote_sum %></button>
+</form>
+
 </div>
 <h5><%= @question.text %></h5>
 <% @question.responses.each do |response| %>

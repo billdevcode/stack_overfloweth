@@ -3,7 +3,8 @@ class CreateAnswers < ActiveRecord::Migration
   	 create_table :answers do |t|
   	  	t.belongs_to :user
         t.text :text
-        t.integer :question_id
+        t.belongs_to :question
+
 
   	  	t.timestamps null: false
   	end
