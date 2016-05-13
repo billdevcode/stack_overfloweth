@@ -38,8 +38,10 @@
         <li><a href="#" aria-hidden="true"></span> Profile </a></li>
         <li><a href="/logout"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Logout </a></li>
       <% else %>
-        <li><a href="/signup"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Register </a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Login </a></li>
+        <li><a href="#" data-toggle="modal" data-target="#modal-register"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Register </a></li>
+        <%= erb :"_register" %>
+        <li><a href="#" data-toggle="modal" data-target="#modal-login"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Login </a></li>
+        <%= erb :"_login" %>
       <% end %>
     </ul>
   </div>
