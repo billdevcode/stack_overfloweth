@@ -23,45 +23,26 @@ get '/questions/:id' do
 end
 
 
-#RESPOND TO A QUESTION ROUTES
-get '/questions/:id/responses/new' do
-end
-
 post '/questions/:id/responses' do
-	@response = Response.new()
+	@response = Response.new(user_id: session[:user_id], respondable_id: params[:id], respondable_type: "Question")
   @question = Question.find_by(id: params[:id])
   @question.responses << @response
-  # @question.save DO WE NEED THIS?
   @response.save
   redirect "/questions/#{@question.id}"
 end
 
-
-#ANSWER A QUESTION ROUTES
-get '/questions/:id/answers/new' do
-
-end
-
 post '/questions/:id/answers' do
-	@answer = Answer.new()
+	@answer = Answer.new(user_id: session[:user_id], question_id: params[:id])
   @question = Question.find_by(id: params[:id])
   @question.answers << @answer
-  # @question.save DO WE NEED THIS?
   @answer.save
   redirect "/questions/#{@question.id}"
 end
 
-
-#RESPOND TO A QUESTION'S ANSWER ROUTES
-get '/questions/:question_id/answers/:id/responses/new' do
-
-end
-
 post '/questions/:question_id/answers/:id/responses' do
-  @response = Response.new()
+  @response = Response.new(user_id: session[:user_id], respondable_id: params[:id], respondable_type: "Answer")
   @answer = Answer.find_by(id: params[:id])
   @answer.responses << @response
-  # @answer.save DO WE NEED THIS?
   @response.save
   @question = Question.find_by(id: params[:question_id])
   redirect "/questions/#{@question.id}"
