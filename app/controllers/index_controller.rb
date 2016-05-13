@@ -3,7 +3,7 @@ before do
 end
 
 get '/' do
-  @questions = []
+  @questions = Question.all
   erb :index
 end
 

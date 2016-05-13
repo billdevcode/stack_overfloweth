@@ -15,7 +15,8 @@ end
 
 get '/questions/:id' do
 	@question = Question.find_by(id: params[:id])
-  redirect "/questions/#{@question.id}"
+  @answers = @question.answers
+  erb :'questions/show'
 end
 
 
@@ -61,3 +62,21 @@ post '/questions/:question_id/answers/:id/responses' do
   redirect "/questions/#{@question.id}"
 end
 
+post '/questions/:id/vote' do
+  p params
+  @question = Question.find_by(id: params[:id])
+  @vote = Vote.new
+  if request.xhr?
+    if params[:data] == "upvote"
+      @vote.up_vote = 1
+      @vote.save
+      return @question.up_vote_sum.to_s
+    elsif params[:data] == "downvote"
+      @vote.down_vote = 1
+      @vote.save
+      return @question.down_vote_sum.to_s
+    end
+  else
+    # redirect "/questions/#{params[:id]}/vote"
+  end
+end
