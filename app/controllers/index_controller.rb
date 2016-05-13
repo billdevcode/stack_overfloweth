@@ -3,7 +3,13 @@ before do
 end
 
 get '/' do
-  erb :layout
+  @questions = []
+  erb :index
+end
+
+post '/questions' do
+  p params
+  redirect '/'
 end
 
 
