@@ -1,0 +1,7 @@
+<form action="/questions/<%= @question.question_id %>/response" method="post">
+  <fieldset>
+    <legend>Your response here</legend>
+    Content: <textarea class="form-control" name="response[text]" placeholder="What do you think?"></textarea><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>

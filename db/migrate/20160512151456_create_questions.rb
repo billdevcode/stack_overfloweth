@@ -3,10 +3,10 @@ class CreateQuestions < ActiveRecord::Migration
   	create_table :questions do |t|
   		t.belongs_to :user
   		t.string :title
-  		t.string :text
+  		t.text :text
   		t.integer :best_answer_id
 
-  		t.timestamps
+  		t.timestamps null: false
   	end
 
   	add_index :questions, :best_answer_id
