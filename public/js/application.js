@@ -16,5 +16,17 @@ $(document).ready(function() {
   });
 
 
-
+  $("#upvote-button").on('click', function(event){
+    event.preventDefault();
+    console.log(this)
+    var url = $(this).parent().attr('action');
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: "data=upvote"
+    }).done(function(result){
+      console.log(result);
+      $("#upvote-button").html(result);
+    })
+  })
 });
