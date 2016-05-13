@@ -1,3 +1,5 @@
+use Rack::Session::Pool, :expire_after => 2592000
+
 helpers do
   def current_user
     @user ||= User.find_by(id: session[:user_id].to_i)
