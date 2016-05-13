@@ -8,7 +8,7 @@ $(document).ready(function() {
       method: 'post',
       data: data
     }).done(function(question) {
-      $("#myModalNorm").modal("hide");
+      $("#modal-question").modal("hide");
       $("#question-form")[0].reset();
       $("#questions-list").prepend(question)
   })
