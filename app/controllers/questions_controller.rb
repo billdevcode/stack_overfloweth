@@ -18,7 +18,9 @@ end
 
 get '/questions/:id' do
 	@question = Question.find_by(id: params[:id])
-  redirect "/questions/#{@question.id}"
+  @answers = @question.answers
+  # redirect "/questions/#{@question.id}"
+  erb :'questions/show'
 end
 
 
