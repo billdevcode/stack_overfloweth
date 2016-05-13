@@ -2,11 +2,11 @@ use Rack::Session::Pool, :expire_after => 2592000
 
 helpers do
 
-  def current_user do
+  def current_user
     @user = User.find(params[:user_id])
   end
 
-  def current_question do
+  def current_question
     @question = Question.find(params[:question_id])
   end
 
