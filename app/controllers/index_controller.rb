@@ -3,7 +3,6 @@ before do
 end
 
 get '/' do
-
   @questions = Question.all.reverse
   erb :index
 end
@@ -26,6 +25,7 @@ end
 
 post '/users' do
   @user = User.new(params['user'])
+  p @user
   if @user.save
     login(@user)
     redirect '/'

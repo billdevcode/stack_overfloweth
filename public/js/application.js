@@ -16,6 +16,8 @@ $(document).ready(function() {
   });
 
 
+
+
   $("#upvote-button").on('click', function(event){
     event.preventDefault();
     console.log(this)
@@ -56,7 +58,6 @@ $(document).ready(function() {
 
   })
   });
-
 
 
   $("#downvote-button").on('click', function(event){
